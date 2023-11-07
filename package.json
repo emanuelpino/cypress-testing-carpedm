@@ -1,0 +1,30 @@
+{
+  "name": "cypress-e2e-framework",
+  "version": "1.0.0",
+  "description": "E2E Framewrok Testing Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run cypress:open",
+    "cypress:open": "cypress open"
+  },
+  "keywords": [
+    "e2e",
+    "automation",
+    "framework",
+    "cypress"
+  ],
+  "eslintConfig": {
+    "env": {
+      "cypress/globals": true
+    },
+    "plugins": [
+      "cypress"
+    ]
+  },
+  "author": "emanuel",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.3.1",
+    "eslint-plugin-cypress": "^2.15.1"
+  }
+}
