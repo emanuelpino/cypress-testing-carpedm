@@ -1,7 +1,6 @@
 const SYSTEM_GUID = "d1e54e71-e486-4d85-96ad-fc2c2f07ca29"
 const API = "https://api-qa.carpedmdating.com/api"
 
-
 const endpoints = {
   'get-tempcode': '/Auth/get-tempcode',
   'code': '/User/code/' //{email}/{systemGuid}
@@ -11,7 +10,6 @@ let codeVerification
 
 Cypress.Commands.add('login', (email, password) => {
   
-
   cy.visit('/login')
   cy.get('[placeholder="Email"]').click().type(email)
   cy.get('[placeholder="Password"]').click().type(password)
@@ -25,14 +23,10 @@ Cypress.Commands.add('login', (email, password) => {
   //Espero que se complete la solicitud interceptada y hago uso del objecto -> interception
   cy.wait('@getTempCode').then((interceptedRequest) => {
     if (interceptedRequest.response.body.authType === 'Success') {
-      let isLoginOk = false
-      isLoginOk = !isLoginOk
-      if (isLoginOk) {
         //Solicitud GET para obtener el code-verification
         cy.request('GET', API + endpoints.code + email + '/' + SYSTEM_GUID).then((response) => {
           expect(response.body)
           codeVerification = response.body
-          console.log(codeVerification)
 
           //Ingreso el codigo de verificacion para validar el login
           cy.get('[placeholder="Enter Code"]').type(codeVerification)
@@ -40,7 +34,6 @@ Cypress.Commands.add('login', (email, password) => {
           cy.get('.login-screen-enter-code').click()
           cy.log('Login ✅ OK')
         })
-      }
     }
     else{
       cy.log('Login NOK ❌')
