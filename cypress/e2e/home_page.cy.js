@@ -7,7 +7,7 @@ let codeVerification
 
 describe('Loguin Flow', () => {
 
-    it('comando de cypress OK', () =>{
+    it.only('comando de cypress OK', () =>{
       cy.login(email, password)
     })
 
