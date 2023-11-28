@@ -1,14 +1,14 @@
-describe('Loguin Flow', () => {
+describe('Loguin flow', () => {
 
-    it('comando de cypress OK', () =>{
+    it('Loguin OK', () =>{
       cy.login(Cypress.env('emailOk'), Cypress.env('passwordOk'))
     })
 
-    it('comando de cypress NOK', () =>{
+    it('Loguin NOK (email fail)', () =>{
       cy.login(Cypress.env('emailNok'), Cypress.env('passwordOk'))
     })
 
-    it('comando cypress NOK', () => {
+    it('Loguin NOK (password fail)', () => {
       cy.login(Cypress.env('emailOk'), Cypress.env('passwordNok'))
     })
 
