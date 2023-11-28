@@ -7,51 +7,51 @@ describe("pool admin", () => {
     })
 
     it("Filter Status SUBMITTED", () => {
-        cy.filterStatus("SUBMITTED")
+        cy.filterProfileStatus("SUBMITTED")
     })
 
    it("Filter Status HOLD", () => {
-    cy.filterStatus("HOLD")
+    cy.filterProfileStatus("HOLD")
    })
 
    it("Filter Status AMEND", () => {
-    cy.filterStatus("AMEND")
+    cy.filterProfileStatus("AMEND")
    })
 
    it("Filter Status REJECTED", () => {
-    cy.filterStatus("REJECTED")
+    cy.filterProfileStatus("REJECTED")
    })
 
    it("Filter Status INTERVIEW", () => {
-    cy.filterStatus("INTERVIEW")
+    cy.filterProfileStatus("INTERVIEW")
    })
 
    it("Filter Status INTERVIEWPAID", () => {
-    cy.filterStatus("INTERVIEWPAID")
+    cy.filterProfileStatus("INTERVIEWPAID")
    })
 
    it("Filter Status INTERVIEWAPPROVED", () => {
-    cy.filterStatus("INTERVIEWAPPROVED")
+    cy.filterProfileStatus("INTERVIEWAPPROVED")
    })
 
    it("Filter Status INTERVIEWREJECTED", () => {
-    cy.filterStatus("INTERVIEWREJECTED")
+    cy.filterProfileStatus("INTERVIEWREJECTED")
    })
 
    it("Filter Status INTERVIEWSKIPPED", () => {
-    cy.filterStatus("INTERVIEWSKIPPED")
+    cy.filterProfileStatus("INTERVIEWSKIPPED")
    })
 
    it("Filter Status BCKINIT", () => {
-    cy.filterStatus("BCKINIT")
+    cy.filterProfileStatus("BCKINIT")
    })
 
    it("Filter Status BCKCOMPLETED", () => {
-    cy.filterStatus("BCKCOMPLETED")
+    cy.filterProfileStatus("BCKCOMPLETED")
    })
 
    it("Filter Status BCKREJECTED", () => {
-    cy.filterStatus("BCKREJECTED")
+    cy.filterProfileStatus("BCKREJECTED")
    })
 
    it("Filter Status PAID", () => {

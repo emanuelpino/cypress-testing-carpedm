@@ -11,4 +11,28 @@ describe("Pool Profile Status", () => {
         cy.filterMembershipStatus("Active")
     })
    
+    it("Filter Status Active", () => {
+        cy.filterMembershipStatus("Active")
+    })
+   
+    it("Filter Status Active", () => {
+        cy.filterMembershipStatus("Active")
+    })
+   
+    it("Filter Status Active", () => {
+        cy.filterMembershipStatus("Active")
+    })
+   
+    it("Filter Status Active", () => {
+        cy.filterMembershipStatus("Active")
+    })
+   
+    it("Filter Status Active", () => {
+        cy.filterMembershipStatus("Active")
+    })
+   
+    it("Filter Status Active", () => {
+        cy.filterMembershipStatus("Active")
+    })
+   
 })
