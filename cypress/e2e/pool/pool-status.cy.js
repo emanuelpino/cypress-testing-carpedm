@@ -1,8 +1,7 @@
 describe("pool admin", () => {
 
-    // Establecemos una sesion
     beforeEach("Pre conditions", () => {
-        cy.session("Login", () => {
+        cy.session("Login Session", () => {
             cy.login(Cypress.env('emailOk'), Cypress.env('passwordOk')).wait(5000)
         })
     })
