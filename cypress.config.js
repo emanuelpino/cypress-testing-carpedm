@@ -5,6 +5,8 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    baseUrl: "https://admin-qa.carpedmdating.com"
+    baseUrl: "https://admin-qa.carpedmdating.com",
+    video: true
   },
+
 });

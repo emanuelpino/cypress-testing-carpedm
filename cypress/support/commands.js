@@ -70,7 +70,14 @@ Cypress.Commands.add('filterMembershipStatus', (status) => {
 
   cy.intercept('POST', "https://api-qa.carpedmdating.com/api/User/search-paginated-users").as('paginatedUsers');
 
-  cy.contains(`${status}`).click()
+  // TODO: eliminar if y else if
+  if(status === 'DepositPayed'){
+    cy.contains('Deposit Payed').click()
+  } else if (status === 'ScheduledToCancel') {
+    cy.contains('Scheduled to Cancel').click()
+  } else {
+    cy.contains(`${status}`).click()
+  }
 
   cy.wait('@paginatedUsers').then(interception => {
     const response = interception.response.body.result
@@ -81,4 +88,48 @@ Cypress.Commands.add('filterMembershipStatus', (status) => {
       cy.log("¡¡ NO DATA !!")
     }
   })
+})
+
+Cypress.Commands.add('filterPrimaryFiltersAge', () => {
+  const minNumber = Math.floor(Math.random() * (99 - 0 + 1)) + 0
+  const maxNumber = Math.floor(Math.random() * (99 - minNumber + 1)) + minNumber
+
+  cy.contains('Primary Filters').click({force: true})
+
+  cy.get('[placeholder="min"]').click({force: true}).type(minNumber)
+  cy.get('[placeholder="max"]').click({force: true}).type(maxNumber)
+})
+
+Cypress.Commands.add('filterPrimaryFilterSexualPreference', (sexualPreference) => {
+  cy.contains('Primary Filters').click({force: true})
+  cy.contains(sexualPreference).click({force: true})
+})
+
+Cypress.Commands.add('filterPrimaryFiltersGender', (gender) => {
+
+  cy.contains('Primary Filters').click({force: true})
+
+  // cy.intercept('POST', "https://api-qa.carpedmdating.com/api/User/search-paginated-users").as('paginatedUsers');
+
+  cy.contains(gender).click({force: true})
+
+  // cy.wait('@paginatedUsers').then( interception => {
+  //   const response = interception.response.body.result
+  //   if (response) {
+  //     const result = response.every( user => user.gender === `${gender}`)
+  //     expect(result).to.be.true
+  //   } else {
+  //     cy.log("¡¡ NO DATA !!")
+  //   }
+  // })
+})
+
+Cypress.Commands.add('filterPrimaryFiltersEthnicity', (ethinicity) => {
+  cy.contains('Primary Filters').click({force: true})
+  cy.contains(ethinicity).click({force: true})
+})
+
+Cypress.Commands.add('filterPrimaryFiltersSeeking', (seeking) => {
+  cy.contains('Primary Filters').click({force: true})
+  cy.contains(seeking).click({force: true})
 })

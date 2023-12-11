@@ -1,4 +1,4 @@
-describe("Pool Profile Status", () => {
+describe("Pool - Membership Status", () => {
 
     beforeEach("Pre conditions", () => {
         cy.session("Login Session", () => {
@@ -11,28 +11,28 @@ describe("Pool Profile Status", () => {
         cy.filterMembershipStatus("Active")
     })
    
-    it("Filter Status Active", () => {
-        cy.filterMembershipStatus("Active")
+    it("Filter Status Cancelled", () => {
+        cy.filterMembershipStatus("Cancelled")
     })
    
-    it("Filter Status Active", () => {
-        cy.filterMembershipStatus("Active")
+    it("Filter Status Suspended", () => {
+        cy.filterMembershipStatus("Suspended")
     })
    
-    it("Filter Status Active", () => {
-        cy.filterMembershipStatus("Active")
+    it("Filter Status Deposit Payed", () => {
+        cy.filterMembershipStatus("DepositPayed")
     })
    
-    it("Filter Status Active", () => {
-        cy.filterMembershipStatus("Active")
+    it("Filter Status Paused", () => {
+        cy.filterMembershipStatus("Paused")
     })
    
-    it("Filter Status Active", () => {
-        cy.filterMembershipStatus("Active")
+    it("Filter Status Scheduled to Cancel", () => {
+        cy.filterMembershipStatus("ScheduledToCancel")
     })
    
-    it("Filter Status Active", () => {
-        cy.filterMembershipStatus("Active")
+    it("Filter Status Trialing", () => {
+        cy.filterMembershipStatus("Trialing")
     })
    
 })

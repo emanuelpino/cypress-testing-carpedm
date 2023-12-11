@@ -1,4 +1,4 @@
-describe("pool admin", () => {
+describe("Pool - Profile Status", () => {
 
     beforeEach("Pre conditions", () => {
         cy.session("Login Session", () => {
