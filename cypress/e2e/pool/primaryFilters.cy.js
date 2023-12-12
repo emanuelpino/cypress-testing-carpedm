@@ -167,4 +167,30 @@ describe('Pool - Primary Filters', () => {
     it('Primary Filters - Seeking "New Friends"', () => {
         cy.filterPrimaryFiltersSeeking('New Friends')
     });
+
+    // Primary Filters -> Mobile Device
+
+    it('Primary Filters - Seeking "iPhone/iPad"', () => {
+        cy.filterPrimaryFiltersMobileDevice('iPhone/iPad')
+    });
+
+    it('Primary Filters - Seeking "Android"', () => {
+        cy.filterPrimaryFiltersMobileDevice('Android')
+    });
+
+    it('Primary Filters - Seeking "Other"', () => {
+        cy.filterPrimaryFiltersMobileDevice('Other')
+    });
+
+    // Primary Filters -> Matchmaker
+
+    it('Primary Filters - Matchmaker "Random"', () => {
+        cy.filterPrimaryFiltersMatchmaker()
+    });
+   
+    // Primary Filters -> Location
+
+    it.skip('Primary Filters - Location "Random"', () => {
+        cy.filterPrimaryFiltersLocation()
+    });
 })

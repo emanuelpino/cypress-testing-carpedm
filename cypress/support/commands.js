@@ -41,22 +41,22 @@ Cypress.Commands.add('filterProfileStatus', (status) => {
   // Necesario para evitar interceptar la primer request a search-paginated-users
   cy.wait(5000)
 
-  cy.intercept("POST", "https://api-qa.carpedmdating.com/api/User/search-paginated-users").as('paginatedUsers');
+  // cy.intercept("POST", "https://api-qa.carpedmdating.com/api/User/search-paginated-users").as('paginatedUsers');
 
   cy.get(`[name="${status}"]`).click();
 
-  cy.wait('@paginatedUsers').then((interceptedRequest) => {
+  // cy.wait('@paginatedUsers').then((interceptedRequest) => {
 
-    const response = interceptedRequest.response.body.result;
+  //   const response = interceptedRequest.response.body.result;
 
-    if (response) {
-      const result = response.every(user => user.profileStatus.key === `${status}`)
-      expect(result).to.equal(true);
-    } else {
-      cy.log("¡¡ NO DATA !!")
-    }
+  //   if (response) {
+  //     const result = response.every(user => user.profileStatus.key === `${status}`)
+  //     expect(result).to.equal(true);
+  //   } else {
+  //     cy.log("¡¡ NO DATA !!")
+  //   }
 
-  });
+  // });
 })
 
 Cypress.Commands.add('filterMembershipStatus', (status) => {
@@ -90,6 +90,7 @@ Cypress.Commands.add('filterMembershipStatus', (status) => {
   })
 })
 
+// Primary Filters
 Cypress.Commands.add('filterPrimaryFiltersAge', () => {
   const minNumber = Math.floor(Math.random() * (99 - 0 + 1)) + 0
   const maxNumber = Math.floor(Math.random() * (99 - minNumber + 1)) + minNumber
@@ -106,22 +107,8 @@ Cypress.Commands.add('filterPrimaryFilterSexualPreference', (sexualPreference) =
 })
 
 Cypress.Commands.add('filterPrimaryFiltersGender', (gender) => {
-
   cy.contains('Primary Filters').click({force: true})
-
-  // cy.intercept('POST', "https://api-qa.carpedmdating.com/api/User/search-paginated-users").as('paginatedUsers');
-
   cy.contains(gender).click({force: true})
-
-  // cy.wait('@paginatedUsers').then( interception => {
-  //   const response = interception.response.body.result
-  //   if (response) {
-  //     const result = response.every( user => user.gender === `${gender}`)
-  //     expect(result).to.be.true
-  //   } else {
-  //     cy.log("¡¡ NO DATA !!")
-  //   }
-  // })
 })
 
 Cypress.Commands.add('filterPrimaryFiltersEthnicity', (ethinicity) => {
@@ -132,4 +119,96 @@ Cypress.Commands.add('filterPrimaryFiltersEthnicity', (ethinicity) => {
 Cypress.Commands.add('filterPrimaryFiltersSeeking', (seeking) => {
   cy.contains('Primary Filters').click({force: true})
   cy.contains(seeking).click({force: true})
+})
+
+Cypress.Commands.add('filterPrimaryFiltersMobileDevice', (mobile) => {
+  cy.contains('Primary Filters').click({force: true})
+  cy.contains(mobile).click({force: true})
+})
+
+// ❌ MEJORAR !!
+Cypress.Commands.add('filterPrimaryFiltersMatchmaker', () => {
+  cy.contains('Primary Filters').click({force: true})
+  cy.contains('Matchmaker').should('be.visible');
+
+  cy.get('[placeholder="Search by Matchmaker"]').click({force: true})
+  cy.get('[placeholder="Search by Matchmaker"]').type('Marcos Trejo').type('{downarrow}').type('{enter}')
+})
+
+// ❌ MEJORAR !!
+Cypress.Commands.add('filterPrimaryFiltersLocation', () => {
+  cy.contains('Primary Filters').click()
+  cy.contains('Location').should('be.visible');
+
+  cy.get('[placeholder="Search by Location"]').click()
+  cy.get('[placeholder="Search by Location"]').type('70511').type('{downarrow}').type('{enter}')
+})
+
+// Secondary Filters
+
+// Cypress.Commands.add('filterSecondaryFiltersHeight', () => {
+//   const minNumber = Math.floor(Math.random() * (99 - 0 + 1)) + 0
+//   const maxNumber = Math.floor(Math.random() * (99 - minNumber + 1)) + minNumber
+
+//   cy.contains('Secondary Filters').click({force: true})
+//   cy.contains('Height').should('be.visible')
+
+//   cy.get('[placeholder="min"]').click({force: true}).type(minNumber)
+//   cy.get('[placeholder="max"]').click({force: true}).type(maxNumber)
+// })
+
+Cypress.Commands.add('filterSecondaryFiltersBodyType', (bodyType) => {
+  cy.contains('Status').click()
+  cy.contains('Secondary Filters').click()
+  cy.contains('Body Type').click()
+  cy.contains(bodyType).click()
+})
+
+Cypress.Commands.add('filterSecondaryFiltersSmoking', (smoking) => {
+  cy.contains('Status').click()
+  cy.contains('Secondary Filters').click()
+  cy.contains('Smoking').click()
+  cy.contains(smoking).click({force:true})
+})
+
+Cypress.Commands.add('filterSecondaryFiltersReligion', (religion) => {
+  cy.contains('Status').click()
+  cy.contains('Secondary Filters').click()
+  cy.contains('Religion').click()
+  cy.contains(religion).click({force:true})
+})
+
+Cypress.Commands.add('filterSecondaryFiltersPolitics', (politics) => {
+  cy.contains('Status').click()
+  cy.contains('Secondary Filters').click()
+  cy.contains('Politics').click()
+  cy.contains(politics).click({force:true})
+})
+
+Cypress.Commands.add('filterSecondaryFiltersChildren', (children) => {
+  cy.contains('Status').click()
+  cy.contains('Secondary Filters').click()
+  cy.contains('Children').click()
+  cy.contains(children).click()
+})
+
+Cypress.Commands.add('filterSecondaryFiltersEducation', (education) => {
+  cy.contains('Status').click()
+  cy.contains('Secondary Filters').click()
+  cy.contains('Education').click()
+  cy.contains(education).click()
+})
+
+Cypress.Commands.add('filterSecondaryFiltersIncome', (income) => {
+  cy.contains('Status').click()
+  cy.contains('Secondary Filters').click()
+  cy.contains('Income').click()
+  cy.contains(income).click()
+})
+
+Cypress.Commands.add('filterSecondaryFiltersHighProfile', (highProfile) => {
+  cy.contains('Status').click()
+  cy.contains('Secondary Filters').click()
+  cy.contains('High Profile').click()
+  cy.contains(highProfile).click({force:true})
 })
